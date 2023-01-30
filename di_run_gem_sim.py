@@ -7,172 +7,6 @@ import warnings
 
 warnings.filterwarnings("ignore")
 
-# Meta data: Frags, min plat sell
-Lookup_vendor = {"1_Berserkers_Eye_[*]": [1, 900],
-                 "1_Caarsens_Invigoration_[*]": [1, 900],
-                 "1_Chained_Death_[*]": [1, 900],
-                 "1_Defiant_Soul_[*]": [1, 900],
-                 "1_Everlasting_Torment_[*]": [1, 900],
-                 "1_Freedom_and_Devotion_[*]": [1, 900],
-                 "1_Mocking_Laughter_[*]": [1, 900],
-                 "1_Nightmare_Wreath_[*]": [1, 900],
-                 "1_Pain_of_Subjugation_[*]": [1, 900],
-                 "1_Respite_Stone_[*]": [1, 900],
-                 "1_Seleds_Weakening_[*]": [1, 900],
-                 "1_Trickshot_Gem_[*]": [1, 900],
-                 "1_Zod_Stone_[*]": [1, 900],
-                 "1_Heartstone_[*]": [1, 900],
-                 "1_Blessed_Pebble_[*]": [1, 900],
-                 "2_Battleguard_[**]": [4, 3900],
-                 "2_Bloody Reach_[**]": [4, 3900],
-                 "2_Cutthroats_Grin_[**]": [4, 3900],
-                 "2_Followers_Burden_[**]": [4, 3900],
-                 "2_Lightning_Core_[**]": [4, 3900],
-                 "2_Power_and_Command_[**]": [4, 3900],
-                 "2_The_Hunger_[**]": [4, 3900],
-                 "2_Unity_Crystal_[**]": [4, 3900],
-                 "2_Kir_Sling_[**]": [4, 3900],
-                 "2_Volatility_Shard_[**]": [4, 3900],
-                 "2_The_Abiding_Curse_[**]": [4, 3900],
-                 "502_Blessing_of_the_Worthy_[**---]": [32, 39000],
-                 "502_Blood_Soaked_Jade_[**---]": [32, 64000],
-                 "502_Bottled_Hope_[**---]": [32, 64000],
-                 "502_Chip_of_Stoned_Flesh_[**---]": [32, 48000],
-                 "502_Echoing_Shade_[**---]": [32, 60000],
-                 "502_Howlers_Call_[**---]": [32, 39000],
-                 "502_Phoenix_Ashes_[**---]": [32, 41000],
-                 "502_Seeping_Bile_[**---]": [32, 64000],
-                 "502_Zwensons_Haunting_[**---]": [32, 38000],
-                 "502_Frozen_Heart_[**---]": [32, 39555],
-                 "502_Hellfire_Fragment_[**---]": [32, 35000],
-                 "502_Concentrated_Will_[**---]": [32, 29000],
-                 "503_Blessing_of_the_Worthy_[***--]": [32, 65000],
-                 "503_Blood_Soaked_Jade_[***--]": [32, 125000],
-                 "503_Bottled_Hope_[***--]": [32, 75000],
-                 "503_Chip_of_Stoned_Flesh_[***--]": [32, 54000],
-                 "503_Echoing_Shade_[***--]": [32, 77000],
-                 "503_Howlers_Call_[***--]": [32, 50000],
-                 "503_Phoenix_Ashes_[***--]": [32, 58000],
-                 "503_Seeping_Bile_[***--]": [32, 80000],
-                 "503_Zwensons_Haunting_[***--]": [32, 40000],
-                 "503_Frozen_Heart_[***--]": [32, 87000],
-                 "503_Hellfire_Fragment_[***--]": [32, 35000],
-                 "503_Concentrated_Will_[***--]": [32, 40000],
-                 "504_Blessing_of_the_Worthy_[****-]": [32, 94000],
-                 "504_Blood_Soaked_Jade_[****-]": [32, 320000],
-                 "504_Bottled_Hope_[****-]": [32, 182000],
-                 "504_Chip_of_Stoned_Flesh_[****-]": [32, 99000],
-                 "504_Echoing_Shade_[****-]": [32, 160000],
-                 "504_Howlers_Call_[****-]": [32, 120000],
-                 "504_Phoenix_Ashes_[****-]": [32, 150000],
-                 "504_Seeping_Bile_[****-]": [32, 320000],
-                 "504_Zwensons_Haunting_[****-]": [32, 160000],
-                 "504_Frozen_Heart_[****-]": [32, 150000],
-                 "504_Hellfire_Fragment_[****-]": [32, 115000],
-                 "504_Concentrated_Will_[****-]": [32, 90000],
-                 "505_Blessing_of_the_Worthy_[*****]": [32, 450000],
-                 "505_Blood_Soaked_Jade_[*****]": [32, 640000],
-                 "505_Bottled_Hope_[*****]": [32, 640000],
-                 "505_Chip_of_Stoned_Flesh_[*****]": [32, 340000],
-                 "505_Echoing_Shade_[*****]": [32, 640000],
-                 "505_Howlers_Call_[*****]": [32, 450000],
-                 "505_Phoenix_Ashes_[*****]": [32, 450000],
-                 "505_Seeping_Bile_[*****]": [32, 640000],
-                 "505_Zwensons_Haunting_[*****]": [32, 340000],
-                 "505_Frozen_Heart_[*****]": [32, 430000],
-                 "505_Hellfire_Fragment_[*****]": [32, 340000],
-                 "505_Concentrated_Will_[*****]": [32, 340000]}
-
-
-# return the resonance value of the gem
-def find_resonance(rank, gem_type):
-    if gem_type == 'two_out_of_five':
-        if rank == 'one':
-            res = 30.00
-        elif rank == 'two':
-            res = 110.00
-        elif rank == 'three':
-            res = 190.00
-        elif rank == 'four':
-            res = 280.00
-        elif rank == 'five':
-            res = 370.00
-        elif rank == 'six':
-            res = 460.00
-        elif rank == 'seven':
-            res = 550.00
-        elif rank == 'eight':
-            res = 640.00
-        elif rank == 'nine':
-            res = 730.00
-        else:
-            res = 820.00
-    elif gem_type == 'three_out_of_five':
-        if rank == 'one':
-            res = 60.00
-        elif rank == 'two':
-            res = 140.00
-        elif rank == 'three':
-            res = 230.00
-        elif rank == 'four':
-            res = 320.00
-        elif rank == 'five':
-            res = 410.00
-        elif rank == 'six':
-            res = 500.00
-        elif rank == 'seven':
-            res = 590.00
-        elif rank == 'eight':
-            res = 680.00
-        elif rank == 'nine':
-            res = 770.00
-        else:
-            res = 860.00
-    elif gem_type == 'four_out_of_five':
-        if rank == 'one':
-            res = 90.00
-        elif rank == 'two':
-            res = 180.00
-        elif rank == 'three':
-            res = 270.00
-        elif rank == 'four':
-            res = 360.00
-        elif rank == 'five':
-            res = 450.00
-        elif rank == 'six':
-            res = 540.00
-        elif rank == 'seven':
-            res = 630.00
-        elif rank == 'eight':
-            res = 720.00
-        elif rank == 'nine':
-            res = 810.00
-        else:
-            res = 900.00
-    elif gem_type == 'five_out_of_five':
-        if rank == 'one':
-            res = 100.00
-        elif rank == 'two':
-            res = 200.00
-        elif rank == 'three':
-            res = 300.00
-        elif rank == 'four':
-            res = 400.00
-        elif rank == 'five':
-            res = 500.00
-        elif rank == 'six':
-            res = 600.00
-        elif rank == 'seven':
-            res = 700.00
-        elif rank == 'eight':
-            res = 800.00
-        elif rank == 'nine':
-            res = 900.00
-        else:
-            res = 1000.00
-    return (res)
-
-
 def run_gem_sim_multi(money_spent,
                       simulations,
                       starting_frags,
@@ -208,13 +42,6 @@ def run_gem_sim_multi(money_spent,
                       Gem_six_type_current,
                       starting_copies_six
                       ):
-    import pandas as pd
-    import random
-    import numpy as np
-    from math import trunc
-    import time
-    import warnings
-    warnings.filterwarnings("ignore")
 
     ranking_lu = pd.DataFrame({'current_level': ['one', 'one', 'one', 'one', 'one', 'one', 'one', 'one', 'one', 'one',
                                                  'two', 'two', 'two', 'two', 'two', 'two', 'two', 'two', 'two', 'three',
@@ -246,17 +73,6 @@ def run_gem_sim_multi(money_spent,
                                                 1525, 2250, 3325, 4400, 0, 100, 350, 725, 1450, 2175, 3250, 4325, 0,
                                                 250, 625, 1350, 2075, 3150, 4225, 0, 375, 1100, 1825, 2900, 3975, 0,
                                                 725, 1450, 2525, 3600, 0, 725, 1800, 2875, 0, 1075, 2150, 0, 1075, 0]})
-
-    simulation_list = []
-
-    price_bundle = 217.74
-
-    number_bundles = 20
-    x = 0
-
-    for i in range(number_bundles):
-        x = x + (price_bundle * 5)
-        simulation_list.append(trunc(x))
 
     col = pd.Series(simulation_list).apply(format).to_list()
     summary_df = pd.DataFrame(columns=col, index=['min', '25%', '50%', '75%', 'max']).reset_index()
@@ -387,7 +203,7 @@ def run_gem_sim_multi(money_spent,
                      "502_Phoenix_Ashes_[**---]": [32, 41000],
                      "502_Seeping_Bile_[**---]": [32, 64000],
                      "502_Zwensons_Haunting_[**---]": [32, 38000],
-                     "502_Frozen_Heart_[**---]": [32, 39555],
+                     "502_Frozen_Heart_[**---]": [32, 39000],
                      "502_Hellfire_Fragment_[**---]": [32, 35000],
                      "502_Concentrated_Will_[**---]": [32, 29000],
                      "503_Blessing_of_the_Worthy_[***--]": [32, 65000],
@@ -426,6 +242,8 @@ def run_gem_sim_multi(money_spent,
                      "505_Frozen_Heart_[*****]": [32, 430000],
                      "505_Hellfire_Fragment_[*****]": [32, 340000],
                      "505_Concentrated_Will_[*****]": [32, 340000]}
+    
+    
     lu = pd.DataFrame(Lookup_vendor).T.reset_index()
     lu.columns = ["gem", "frags", "sell_price"]
 
